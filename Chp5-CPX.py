@@ -15,24 +15,22 @@ import time
 # Maxindex = 9 or highest neopixel
 
 
+from adafruit_circuitplayground import cp
+import time
+
 maxlight = 321
 maxneo = 10
 
 def main():
     while True:
-        if cp.light:
-            light = cp.light
-            index = scale(light)
-            cp.pixels[index] = (0, 50, 0)
-        # else:
-            off()
-
+        light = cp.light
+        index = scale(light)
+        cp.pixels[index] = (0, 50, 0)
+        time.sleep(.5)
+        cp.pixels[index] = (0, 0, 0)
+        print((index,))
 def scale(light):
     return int(light/maxlight * maxneo)
-
-def off():
-    for num in range(0, 10):
-        cp.pixels[num] = (0, 0, 0)
 
 main()
 
