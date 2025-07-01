@@ -27,10 +27,14 @@ def main():
         index = scale(light)
         cp.pixels[index] = (0, 50, 0)
         time.sleep(.5)
-        cp.pixels[index] = (0, 0, 0)
+        black()
         print((index,))
 def scale(light):
     return int(light/maxlight * maxneo)
+
+def black():
+    for num in range(0, maxneo):
+        cp.pixels[num] = (0, 0, 0)
 
 main()
 
